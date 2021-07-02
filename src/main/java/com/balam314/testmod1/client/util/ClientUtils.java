@@ -15,6 +15,10 @@ public class ClientUtils {
 		TestMod1.LOGGER.info("Loaded TestMod1/ClientUtils");
 	}
 	
+	public enum Key {
+		LSHIFT, RSHIFT, LCONTROL, RCONTROL, LALT, RALT 
+	}
+	
 	static public boolean checkKeyPressed(int key) {
 		if(key == 0) {
 			TestMod1.LOGGER.warn("Attempted to check whether key 0 was pressed!");
@@ -43,6 +47,31 @@ public class ClientUtils {
 				keynum = GLFW.GLFW_KEY_LEFT_ALT;
 				break;
 			case "ralt":
+				keynum = GLFW.GLFW_KEY_RIGHT_ALT;
+				break;
+		}
+		return checkKeyPressed(keynum);
+	}
+	
+	static public boolean checkKeyPressed(Key key) {
+		int keynum = 0;
+		switch(key) {
+			case LSHIFT:
+				keynum = GLFW.GLFW_KEY_LEFT_SHIFT;
+				break;
+			case RSHIFT:
+				keynum = GLFW.GLFW_KEY_RIGHT_SHIFT;
+				break;
+			case LCONTROL:
+				keynum = GLFW.GLFW_KEY_LEFT_CONTROL;
+				break;
+			case RCONTROL:
+				keynum = GLFW.GLFW_KEY_RIGHT_CONTROL;
+				break;
+			case LALT:
+				keynum = GLFW.GLFW_KEY_LEFT_ALT;
+				break;
+			case RALT:
 				keynum = GLFW.GLFW_KEY_RIGHT_ALT;
 				break;
 		}
