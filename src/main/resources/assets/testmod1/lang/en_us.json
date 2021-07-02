@@ -1,0 +1,7 @@
+{
+    "item.testmod1.thingy": "Thingy",
+    "block.testmod1.thomas": "Thomas Block",
+    "item.testmod1.thomas": "Thomas Block",
+    "item.testmod1.meme": "Meme",
+    "item.testmod1.meme.tooltip": "Right click a block with this to break it! Even works on bedrock!"
+}
