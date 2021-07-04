@@ -1,6 +1,7 @@
 package com.balam314.testmod1.core.init;
 
 import com.balam314.testmod1.TestMod1;
+import com.balam314.testmod1.common.block.RickrollBlock;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -26,6 +27,16 @@ public class BlockInit {
 				.jumpFactor(420.0f)
 				.speedFactor(69.0f)
 				.sound(SoundType.GILDED_BLACKSTONE)
+				.requiresCorrectToolForDrops()
+			));
+	
+	public static final RegistryObject<Block> RICKROLL = BLOCK.register("rickroll", () -> new RickrollBlock(
+			AbstractBlock.Properties.of(Material.METAL)
+				.friction(0f)
+				.harvestLevel(4)
+				.harvestTool(ToolType.PICKAXE)
+				.strength(75.0f, 69420.0f)
+				.sound(SoundType.LODESTONE)
 				.requiresCorrectToolForDrops()
 			));
 	

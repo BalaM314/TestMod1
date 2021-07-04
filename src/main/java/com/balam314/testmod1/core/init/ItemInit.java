@@ -22,5 +22,6 @@ public class ItemInit {
 	public static final RegistryObject<SillyItem> SpecialItem = ITEM.register("meme", () -> new SillyItem(new Item.Properties().rarity(Rarity.EPIC).stacksTo(1).tab(ItemGroup.TAB_TOOLS)));
 	
 	//BlockItems
-	public static final RegistryObject<BlockItem> Thomas = ITEM.register("thomas", () -> new BlockItem(BlockInit.THOMAS.get(), new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(ItemGroup.TAB_BUILDING_BLOCKS))); 
+	public static final RegistryObject<BlockItem> Thomas = ITEM.register("thomas", () -> new BlockItem(BlockInit.THOMAS.get(), new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(ItemGroup.TAB_BUILDING_BLOCKS)));
+	public static final RegistryObject<BlockItem> Rickroll = ITEM.register("rickroll", () -> new BlockItem(BlockInit.RICKROLL.get(), new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(ItemGroup.TAB_MISC)));
 }

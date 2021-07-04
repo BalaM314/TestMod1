@@ -1,0 +1,12 @@
+{
+    "parent": "minecraft:block/cube",
+    "textures": {
+        "particle": "testmod1:blocks/thomas_side_up",
+        "north": "testmod1:blocks/thomas_side_north",
+        "south": "testmod1:blocks/thomas_side_south",
+        "east": "testmod1:blocks/thomas_side_east",
+        "west": "testmod1:blocks/thomas_side_west",
+        "up": "testmod1:blocks/thomas_side_up",
+        "down": "testmod1:blocks/thomas_side_down"
+    }
+}

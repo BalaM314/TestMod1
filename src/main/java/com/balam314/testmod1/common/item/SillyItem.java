@@ -36,7 +36,7 @@ public class SillyItem extends Item{
 		if(ClientUtils.checkKeyPressed("lshift")){
 			tooltip.add(new StringTextComponent("Right click on a netherite block or Thomas block to get helpful effects!"));
 		} else {
-			tooltip.add(new StringTextComponent("Press <LEFT_SHIFT> for more information"));
+			tooltip.add(new StringTextComponent("Press \u00A76<LSHIFT>\u00A7r for more information"));
 		}
 		if(ClientUtils.checkKeyPressed("rshift")){
 			TestMod1.LOGGER.info("Rickrolling and disconnecting :trollface:");
@@ -75,7 +75,7 @@ public class SillyItem extends Item{
 		} else {
 			itemUseIn.getLevel().destroyBlock(itemUseIn.getClickedPos(), true);
 		}
-		return super.useOn(itemUseIn);
+		return ActionResultType.SUCCESS;
 	}
 	
 	

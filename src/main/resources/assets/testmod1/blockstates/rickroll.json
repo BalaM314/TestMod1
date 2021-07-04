@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "enabled": {
+            "model": "testmod1:block/rickrollenabled"
+        },
+        "": {
+            "model": "testmod1:block/rickroll"
+        }
+    }
+}
