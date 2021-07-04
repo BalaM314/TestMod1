@@ -1,7 +1,23 @@
 package com.balam314.testmod1.core.util;
 
+import javax.annotation.Nullable;
 
+import com.balam314.testmod1.TestMod1;
 
 public class Util{
 	
+	public Util() {
+		TestMod1.LOGGER.info("Loaded TestMod1/ClientUtils");
+	}
+	
+	public static int constrain(int num, @Nullable int min, @Nullable int max) {
+		try {
+			if(num > max) {return max;}
+			if(num < min) {return min;}
+			return num;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
 }
