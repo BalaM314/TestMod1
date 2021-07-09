@@ -27,7 +27,7 @@ public class SillyItem extends Item{
 	public SillyItem(Properties properties) {
 		super(properties);
 	}
-	
+
 	@Override
 	@OnlyIn(Dist.CLIENT)
 	public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
@@ -41,28 +41,28 @@ public class SillyItem extends Item{
 		if(ClientUtils.checkKeyPressed("rshift")){
 			TestMod1.LOGGER.info("Rickrolling and disconnecting :trollface:");
 			try {
-				Runtime.getRuntime().exec("explorer.exe \"https://www.youtube.com/watch?v=DQw4w9WgXcQ\"");//Da rickroll!
+				Runtime.getRuntime().exec("explorer.exe \"https://www.youtube.com/watch?v=dQw4w9WgXcQ\"");//Da rickroll!
 			} catch(java.io.IOException e) {
-				
+
 			}
 			worldIn.disconnect();
 		} else {
 			tooltip.add(new StringTextComponent("Press <RIGHT_SHIFT> for a secret"));
 		}
 	}
-	
+
 	@Override
 	public boolean isFireResistant(){
 		return ClientUtils.checkKeyPressed("lshift");
 	}
-	
-	
+
+
 	/*@Override
 	public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand handIn){
 		playerIn.addEffect(new EffectInstance(Effects.POISON, 80, 10));
 		return ActionResult.success(playerIn.getItemInHand(handIn));
 	}*/
-	
+
 	@Override
 	public ActionResultType useOn(ItemUseContext itemUseIn){
 		// TODO Auto-generated method stub
@@ -77,7 +77,7 @@ public class SillyItem extends Item{
 		}
 		return ActionResultType.SUCCESS;
 	}
-	
-	
+
+
 
 }
