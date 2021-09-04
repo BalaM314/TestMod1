@@ -7,8 +7,10 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.Hand;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -29,6 +31,7 @@ public class ThomasTokenItem extends Item {
 		tooltip.add(new StringTextComponent("Right click to toggle god mode"));
 		tooltip.add(new StringTextComponent("Creative only"));
 	}
+	
 	
 	@Override
 	public ActionResultType onItemUseFirst(ItemStack stack, ItemUseContext context) {

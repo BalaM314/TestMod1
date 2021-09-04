@@ -40,6 +40,7 @@ public class TestMod1 {
     
     @SubscribeEvent
     public static void onCommandRegister(final RegisterCommandsEvent event) {
+    	LOGGER.warn("#####################<onCommandRegister called!>###############");
     	CommandInit.registerCommands(event);
     }
     

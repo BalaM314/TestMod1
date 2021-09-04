@@ -41,4 +41,11 @@ public class SpeedCommand extends BaseCommand {
 		
 		return Command.SINGLE_SUCCESS;
 	}
+	
+	private int execute(CommandSource source, ServerPlayerEntity player, float speedAsFloat) {
+		player.setSpeed(speedAsFloat);
+		player.abilities.setFlyingSpeed(speedAsFloat);
+		
+		return Command.SINGLE_SUCCESS;
+	}
 }

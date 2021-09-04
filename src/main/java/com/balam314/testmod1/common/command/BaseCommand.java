@@ -8,10 +8,12 @@ import net.minecraft.command.Commands;
 public class BaseCommand {
 	protected LiteralArgumentBuilder<CommandSource> builder;
 	boolean enabled;
+	public String name;
 	
 	public BaseCommand(String name, int permissionLevel, boolean enabled) {
 		this.builder = Commands.literal(name).requires(source -> source.hasPermission(permissionLevel));
 		this.enabled = enabled;
+		this.name = name;
 	}
 	
 	public LiteralArgumentBuilder<CommandSource> getBuilder() {
