@@ -2,6 +2,7 @@ package com.balam314.testmod1.core.init;
 
 import com.balam314.testmod1.TestMod1;
 import com.balam314.testmod1.common.item.SillyItem;
+import com.balam314.testmod1.common.item.ThomasTokenItem;
 
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -20,6 +21,7 @@ public class ItemInit {
 	
 	public static final RegistryObject<Item> Thingy = ITEM.register("thingy", () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.EPIC).stacksTo(63).tab(ItemGroup.TAB_MISC)));
 	public static final RegistryObject<SillyItem> SpecialItem = ITEM.register("meme", () -> new SillyItem(new Item.Properties().rarity(Rarity.EPIC).stacksTo(1).tab(ItemGroup.TAB_TOOLS)));
+	public static final RegistryObject<ThomasTokenItem> TokenItem = ITEM.register("thomastoken", () -> new ThomasTokenItem(new Item.Properties().rarity(Rarity.EPIC).stacksTo(1).tab(ItemGroup.TAB_TOOLS)));
 	
 	//BlockItems
 	public static final RegistryObject<BlockItem> Thomas = ITEM.register("thomas", () -> new BlockItem(BlockInit.THOMAS.get(), new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(ItemGroup.TAB_BUILDING_BLOCKS)));

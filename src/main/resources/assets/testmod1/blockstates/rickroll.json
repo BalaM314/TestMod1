@@ -1,9 +1,9 @@
 {
     "variants": {
-        "enabled": {
+        "enabled=true": {
             "model": "testmod1:block/rickrollenabled"
         },
-        "": {
+        "enabled=false": {
             "model": "testmod1:block/rickroll"
         }
     }

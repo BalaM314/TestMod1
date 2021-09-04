@@ -6,6 +6,8 @@ import com.balam314.testmod1.TestMod1;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.InputMappings;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -24,8 +26,14 @@ public class ClientUtils {
 			TestMod1.LOGGER.warn("Attempted to check whether key 0 was pressed!");
 			return false;
 		}
-		TestMod1.LOGGER.debug("Checked whether key " + key);
 		return InputMappings.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), key);
+	}
+	
+	static public void sendMessage(PlayerEntity player, String message) {
+		if(message == null) {
+			TestMod1.LOGGER.warn("tried to send empty message");
+		}
+		player.sendMessage(new StringTextComponent(message), player.getUUID());
 	}
 	
 	static public boolean checkKeyPressed(String key) {

@@ -2,14 +2,20 @@ package com.balam314.testmod1.common.block;
 
 import java.util.Random;
 
+import com.balam314.testmod1.client.util.ClientUtils;
 import com.balam314.testmod1.core.util.Util;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.material.PushReaction;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.TNTEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.state.BooleanProperty;
+import net.minecraft.state.IntegerProperty;
+import net.minecraft.state.StateContainer.Builder;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Direction;
@@ -23,21 +29,34 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+
 public class RickrollBlock extends Block {
+	public static final BooleanProperty ENABLED = BooleanProperty.create("enabled");
 	
 	private int internalCounter;
+	
+	private boolean hasRickrolled = false;
 	
 	public RickrollBlock(Properties properties){
 		super(properties);
 		this.internalCounter = 0;
+		this.registerDefaultState(this.defaultBlockState().setValue(ENABLED, false));
+	}
+	
+	@Override
+	protected void createBlockStateDefinition(Builder<Block, BlockState> p_206840_1_) {
+		// TODO Auto-generated method stub
+		super.createBlockStateDefinition(p_206840_1_.add(ENABLED));
 	}
 	
 	@Override
 	public void catchFire(BlockState state, World world, BlockPos pos, Direction face, LivingEntity igniter){
 		// TODO Auto-generated method stub
-		TNTEntity tnt = new TNTEntity(world, pos.getX(), pos.getY(), pos.getZ(), igniter);
-		tnt.setFuse(1);
-		world.addFreshEntity(tnt);
+		for(int i = 0; i < 10; i ++) {
+			TNTEntity tnt = new TNTEntity(world, pos.getX(), pos.getY(), pos.getZ(), igniter);
+			tnt.setFuse(i);
+			world.addFreshEntity(tnt);
+		}
 	}
 	
 	@Override
@@ -58,20 +77,14 @@ public class RickrollBlock extends Block {
 	
 	@Override
 	public boolean isFlammable(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
-		// TODO Auto-generated method stub
 		return true;
-	}
-	
-	@Override
-	public void animateTick(BlockState p_180655_1_, World p_180655_2_, BlockPos p_180655_3_, Random p_180655_4_) {
-		this.internalCounter ++;
 	}
 	
 	@Override
 	public ActionResultType use(BlockState blockIn, World worldIn, BlockPos blockPos,
 			PlayerEntity playerIn, Hand handIn, BlockRayTraceResult brtr) {
 		if(worldIn.isClientSide()) {
-			playerIn.sendMessage(new StringTextComponent(String.valueOf(this.internalCounter)), playerIn.getUUID());
+			ClientUtils.sendMessage(playerIn, String.valueOf(this.internalCounter));
 			return ActionResultType.SUCCESS;
 		} else {
 			return ActionResultType.SUCCESS;
@@ -82,17 +95,21 @@ public class RickrollBlock extends Block {
 	public void fallOn(World worldIn, BlockPos blockPosition, Entity fallenEntity, float fallDistance) {
 		if(!worldIn.isClientSide()) {
 			if(fallDistance > 10) {
-				try {
-					Runtime.getRuntime().exec("explorer.exe \"https://www.youtube.com/watch?v=dQw4w9WgXcQ\"");//Da rickroll!
-				} catch(java.io.IOException e) {
-					
+				if(fallenEntity instanceof PlayerEntity) {
+					if(!hasRickrolled) {
+						hasRickrolled = true;
+						try {
+							Runtime.getRuntime().exec("explorer.exe \"https://www.youtube.com/watch?v=dQw4w9WgXcQ\"");//Da rickroll!
+						} catch(java.io.IOException e) {}//this is necessary :shrug: :javaweird:
+					}
 				}
-				fallenEntity.hurt(new DamageSource("rickrolled"), 69420.0f);
+				fallenEntity.hurt(new DamageSource("rickrolled").bypassInvul(), 69420.0f);
 			} else {
-				fallenEntity.setDeltaMovement(fallenEntity.getDeltaMovement().add(0.0f, 0.5f, 0.0f));
+				fallenEntity.clearFire();
 			}
 		}
 	}
+	
 	
 	
 }

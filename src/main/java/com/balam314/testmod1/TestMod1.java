@@ -2,17 +2,20 @@ package com.balam314.testmod1;
 
 
 
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.balam314.testmod1.core.init.BlockInit;
+import com.balam314.testmod1.core.init.CommandInit;
 import com.balam314.testmod1.core.init.ItemInit;
+
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -34,7 +37,12 @@ public class TestMod1 {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
     }
-
+    
+    @SubscribeEvent
+    public static void onCommandRegister(final RegisterCommandsEvent event) {
+    	CommandInit.registerCommands(event);
+    }
+    
     private void setup(final FMLCommonSetupEvent event){
         LOGGER.info("HELLO FROM PREINIT");
     } 

@@ -32,7 +32,7 @@ public class BlockInit {
 	
 	public static final RegistryObject<Block> RICKROLL = BLOCK.register("rickroll", () -> new RickrollBlock(
 			AbstractBlock.Properties.of(Material.METAL)
-				.friction(0f)
+				.friction(0.1f)
 				.harvestLevel(4)
 				.harvestTool(ToolType.PICKAXE)
 				.strength(75.0f, 69420.0f)

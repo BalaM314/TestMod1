@@ -5,6 +5,8 @@
     "item.testmod1.meme": "Meme",
     "item.testmod1.meme.tooltip": "Right click a block with this to break it! Even works on bedrock!",
     "item.testmod1.rickroll": "Rickroll",
+    "item.testmod1.thomastoken": "Thomas Token",
     "block.testmod1.rickroll": "Block of Rickroll",
-    "death.attack.rickrolled": "%1$s was rickrolled"
+    "death.attack.rickrolled": "%1$s was rickrolled",
+    "death.attack.impatient": "%1$s was impatient with the thomas token"
 }
