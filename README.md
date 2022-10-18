@@ -1,5 +1,5 @@
 ## Test Mod 1
-A meme mod, made by BalaM314.
+A dead meme mod, made by BalaM314.
 Will add totally random and semi-useless features as I learn modding.
 
 Adds the following
